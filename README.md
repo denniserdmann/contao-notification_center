@@ -90,6 +90,17 @@ class MyHook
 ```
 
 
+## Using Token Templates
+You can use Token Templates, if you want to move conditions or calculations in a separate file.
+
+**Example:** You want to send a mail to different recipients depending on conditions set in a form. Instead of writing `{if form_mail=="1"}mail1@domain.tld{endif}{if form_mail=="2"}mail2@domain.tld{endif}` and so on, you can use a Token Template.
+
+1. Create a template beginning with `notification_`, for example `notification_recipients.html5`
+2. Choose your template in the Token Templates field
+3. Use your new token, starting with `##template_##` whereever you want, for example `##template_recipient##` in the Recipients field.
+4. Add your conditions inside your created template. Use PHP-Syntax.<br/>`{if form_mail=="1"}mail1@domain.tld{endif}` => `<?php if ('1' === $this->form_mail): ?>mail1@domain.tld<?php endif; ?>`
+
+
 ## Note to self
 
 Managing translations files.
